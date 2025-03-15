@@ -45,6 +45,7 @@ public class WorkoutController {
     @PutMapping("/")
     public ResponseEntity<WorkoutDto> updateWorkout(@RequestBody WorkoutDto workoutDto)
     {
+        //todo fix workouts not updating
         WorkoutDto workoutDtoUpdate = workoutService.updateWorkoutName(workoutDto);
         return new ResponseEntity<>(workoutDtoUpdate, HttpStatus.OK);
     }

@@ -8,7 +8,7 @@ public interface WorkoutService {
 
     public WorkoutDto getWorkout(String workoutId);
 
-    public List<WorkoutDto> getAllWorkouts();
+    public List <WorkoutDto> getAllWorkouts();
 
     public WorkoutDto createWorkout(WorkoutDto workoutDto);
 
