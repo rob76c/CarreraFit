@@ -3,12 +3,15 @@ package com.carrerafit.carrera_fit.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.carrerafit.carrera_fit.dto.WorkoutDto;
 import com.carrerafit.carrera_fit.entity.Workout;
 import com.carrerafit.carrera_fit.mapper.WorkoutMapper;
 import com.carrerafit.carrera_fit.repository.WorkoutRepository;
 import com.carrerafit.carrera_fit.service.WorkoutService;
 
+@Service
 public class WorkoutServiceImpl implements WorkoutService{
 
     WorkoutRepository workoutRepository;

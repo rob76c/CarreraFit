@@ -1,7 +1,7 @@
 package com.carrerafit.carrera_fit.mapper;
 
 import com.carrerafit.carrera_fit.dto.WorkoutDto;
-import com.carrerafit.entity.Workout;
+import com.carrerafit.carrera_fit.entity.Workout;
 
 public class WorkoutMapper {
 
