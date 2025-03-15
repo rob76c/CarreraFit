@@ -12,8 +12,8 @@ public interface WorkoutRepository extends MongoRepository<Workout, String> {
     @Query("{workoutId : '?0'}")
     Workout findWorkoutByWorkoutId(String workoutId);
 
-    @Query(value = "{'workoutId' : {$eq : ?0}}")
-    @Update(pipeline = {"{'$set' : {'name' : $1}}"})
+    @Query(value = "{ 'workoutId' : { $eq : ?0} }")
+    @Update(pipeline = { " { '$set' : {'name' : ?1}}" })
     void updateWorkoutNameByWorkoutId(String workoutId, String name);
 
     @DeleteQuery
