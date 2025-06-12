@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.carrerafit.carrera_fit.dto.WorkoutDto;
@@ -20,7 +21,14 @@ public class WorkoutController {
         this.workoutService = workoutService;
     }
 
+    @GetMapping("/welcome")
+    public ResponseEntity<String>welcomeMessage()
+    {
+        return new ResponseEntity<>("Welcome to the workouts", HttpStatus.OK);
+    }
+
     @GetMapping("/{workoutId}")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<WorkoutDto> getWorkout(@PathVariable String workoutId)
     {
 
@@ -29,6 +37,7 @@ public class WorkoutController {
     }
 
     @GetMapping("/")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<WorkoutDto>> getAllWorkouts()
     {
         List<WorkoutDto> workoutDtoList = workoutService.getAllWorkouts();
@@ -36,6 +45,8 @@ public class WorkoutController {
     }
 
     @PostMapping("/")
+    @PreAuthorize("hasRole('ADMIN')")
+    //todo add security feature to restrict anyone from creating with the same id, just make a unique id
     public ResponseEntity<WorkoutDto> createWorkouts(@RequestBody WorkoutDto workoutDto)
     {
         WorkoutDto workoutDtoCreate = workoutService.createWorkout(workoutDto);
@@ -43,14 +54,15 @@ public class WorkoutController {
     }
 
     @PutMapping("/")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<WorkoutDto> updateWorkout(@RequestBody WorkoutDto workoutDto)
     {
-        //todo fix workouts not updating
         WorkoutDto workoutDtoUpdate = workoutService.updateWorkoutName(workoutDto);
         return new ResponseEntity<>(workoutDtoUpdate, HttpStatus.OK);
     }
 
     @DeleteMapping("/{workoutId}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteWorkout (@PathVariable String workoutId)
     {
         workoutService.deleteWorkoutByWorkoutId(workoutId);
