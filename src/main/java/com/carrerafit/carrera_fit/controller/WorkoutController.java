@@ -37,7 +37,7 @@ public class WorkoutController {
     }
 
     @GetMapping("/")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<List<WorkoutDto>> getAllWorkouts()
     {
         List<WorkoutDto> workoutDtoList = workoutService.getAllWorkouts();

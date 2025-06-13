@@ -10,7 +10,7 @@ public class UserInfoMapper {
     }
 
     public static UserInfo toEntity(UserInfoDto userInfoDto){
-        return new UserInfo(userInfoDto.userName(), userInfoDto.password(), userInfoDto.roles());
+        return new UserInfo(userInfoDto.userName(), userInfoDto.password(), userInfoDto.roles(), null);
     }
 
 }
