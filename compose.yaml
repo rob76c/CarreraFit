@@ -7,3 +7,7 @@ services:
       - 'MONGO_INITDB_ROOT_USERNAME=root'
     ports:
       - '49497:27017'
+    volumes:
+      - mongodbworkout_data:/data/db
+volumes:
+  mongodbworkout_data:  # <--- Define the volume

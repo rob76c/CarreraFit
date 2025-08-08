@@ -11,6 +11,7 @@ import com.carrerafit.carrera_fit.dto.WorkoutDto;
 import com.carrerafit.carrera_fit.service.WorkoutService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("/workouts")
 public class WorkoutController {
 
